@@ -1,4 +1,4 @@
-# Stream Tweets from Twitter via EC2 
+# Stream Tweets from Twitter via EC2 and store in pymongo
 import yaml
 import os
 import pymongo
