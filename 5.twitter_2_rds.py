@@ -5,18 +5,14 @@ from psycopg2.extras import Json
 from twitter import *
 
 # CONNECT with Twitter 
-credentials = yaml.load(open(os.path.expanduser('twitter_cred.yml')))
-
-CONSUMER_SECRET = credentials['twitter']['consumer_secret']
-CONSUMER_KEY = credentials['twitter']['consumer_key']
-TOKEN = credentials['twitter']['token']
-TOKEN_SECRET = credentials['twitter']['token_secret']
-twitter_stream = TwitterStream(auth = OAuth(TOKEN, TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
+credentials = yaml.load(open(os.path.expanduser( 'twitter_cred.yml')))
+twitter_stream = TwitterStream(auth = OAuth(**credentials['twitter']))
 iterator = twitter_stream.statuses.sample()
 
 
 # CONNECT with psycopg -- PostgreSQL adapter
-conn = psycopg2.connect(database="postgres", user="chaudao", password="chau1904", host="chautwitterpostgres.cy7p020zmkgu.us-west-2.rds.amazonaws.com", port="5432")
+rds_credentials = yaml.load(open(os.path.expanduser('rds_cred.yml')))
+conn = psycopg2.connect(**rds_credentials['rds'])
 print "Opened database successfully"
 cur = conn.cursor()
 
