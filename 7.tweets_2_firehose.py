@@ -20,7 +20,7 @@ counter = 0
 for tweet in iterator:
 	if "delete" not in tweet:
 		response = client.put_record(DeliveryStreamName='chau_firehose',
-			Record={'Data': json.dumps(str(tweet)+'\n')})
+			Record={'Data': json.dumps((tweet)+'\n')})
 		counter += 1
 	if counter % 50 == 0:
 		print('Inserted {} tweets'.format(counter))
