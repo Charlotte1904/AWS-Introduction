@@ -52,7 +52,7 @@ top_10_rdd.saveAsTextFile('s3a://chausparkmr')
 
 
 
-# ssh into EMR
+# ssh into EMR -- install pandas 
 # scp thisfile.py 
 # Run unset PYSPARK_DRIVER_PYTHON to avoid using jupyter command
 # To run this we use following command "spark-submit tweets.py"
