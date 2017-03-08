@@ -46,3 +46,4 @@ if __name__ == '__main__':
 
 
 
+# to run this python MRjob_tweets.py file/ 2> counts2
